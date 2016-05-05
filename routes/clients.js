@@ -39,18 +39,12 @@ var Propertymgr = require('../models/propertymgr.js')
     })
 
     router.put('/:clientId/removeProperty/:propertyId', (req, res) => {
-      // User.unfriendify(req.params.user1, req.params.user2, res.handle);
 
       Client.findById(req.params.clientId, (err, client) => {
 
           if (err) return res.status(400).send(err);
+          //  filter removeProperty from Client
 
-          // Propertymgr.findById(req.params.propertyId, function(err) {
-          //   client.propertyref.push(req.params.propertyId);
-          //   client.save((err, savedClient) => {
-          //     res.status(err ? 400 : 200).send(err || savedClient);
-          //   });
-          // }
 
       });
 

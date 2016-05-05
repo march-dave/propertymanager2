@@ -1,5 +1,22 @@
 <h1 class='text-center'>Update Client</h1>
 
+
+
+
+<div class="row">
+  <h4>Property:</h4>
+    <h4>Property</h4>
+    <ul>
+      <!-- <li ng-repeat='friend in user.friends' ng-dblclick='removeFriend(friend)'> -->
+      <li ng-repeat='property in properties' ng-dblclick='addProperty(property)'>
+        {{ property._id }}
+        {{ property.address }}
+        {{ property.rentprice }}
+        {{ property.utilitiescost }}
+      </li>
+    </ul>
+</div>
+
 <div class="row">
   <div class="col-xs-8 col-xs-offset-2">
 

@@ -39,7 +39,19 @@ app.controller('newClientCtrl', function($scope, $state, $q, $http, ClientServic
   }
 });
 
-app.controller('updateClientCtrl', function($scope, $state, ClientService) {
+app.controller('updateClientCtrl', function($scope, $state, ClientService, PropertymgrService) {
+
+  // PropertymgrService.getPropertyById('572ab2114536260658428ae7')
+  PropertymgrService.getPropertyAll()
+    .then(function(res) {
+
+      $scope.properties = res.data;
+
+      console.log('res.data: ', res.data);
+
+      // console.log('typeof: ', typeof(res.data)  );
+      // console.log('typeof: $scope.properties', typeof($scope.properties)  );
+    })
 
   ClientService.getById($state.params.id)
     .then(function(res){
