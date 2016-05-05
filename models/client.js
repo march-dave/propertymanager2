@@ -11,5 +11,4 @@ var Client = mongoose.model('clientDB', {
   propertyref: [{type: mongoose.Schema.Types.ObjectId, ref: 'propertymgrDB'}]
 });
 
-
 module.exports = Client;
