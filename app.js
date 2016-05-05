@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 
 var mongoose = require('mongoose');
 
-const MONGOURL = process.env.MONGODB_URI || 'mongodb://localhost:/propertymgr-app'
+const MONGOURL = process.env.MONGODB_URI || 'mongodb://localhost:/propertymgr-app2'
 mongoose.connect(MONGOURL, err => {
   console.log(err || `Connected to MongoDB at ${MONGOURL}`);
 });
@@ -17,7 +17,7 @@ var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));

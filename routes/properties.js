@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 // var Tree = require('../models/tree');
-var Flashcard = require('../models/propertymgr');
+var Property = require('../models/propertymgr');
 
 // GET /api/trees   ===> return array of all trees
 // GET /api/trees/id  ===> return one tree by id
@@ -10,7 +10,7 @@ var Flashcard = require('../models/propertymgr');
 
 /* GET users listing. */
 router.get('/', (req, res) => {
-  Flashcard.find({}, (err, trees) => {
+  Property.find({}, (err, trees) => {
     if(err) {
       res.status(400).send(err);
     } else {
@@ -22,17 +22,17 @@ router.get('/', (req, res) => {
 /* GET /api/trees/:id */
 router.get('/:id', (req, res) => {
 
-  Flashcard.findById(req.params.id, (err, flashcards) => {
+  Property.findById(req.params.id, (err, properties) => {
     if(err) {
       res.status(400).send(err);
     } else {
-      res.send(flashcards);
+      res.send(properties);
     }
   });
 });
 
 router.delete('/:id', (req, res) => {
-  Flashcard.findByIdAndRemove(req.params.id, (err, flashcards) => {
+  Property.findByIdAndRemove(req.params.id, (err, properties) => {
     if(err) {
       res.status(400).send(err);
     } else {
@@ -47,23 +47,23 @@ router.put('/:id', (req, res) => {
   // req.params.id --> docuemt id
   // req.body --> update obj
 
-  Flashcard.findByIdAndUpdate(req.params.id,  {$set: req.body},  {new: true}, (err, flashcard) => {
+  Property.findByIdAndUpdate(req.params.id,  {$set: req.body},  {new: true}, (err, property) => {
     if(err) {
       res.status(400).send(err);
     } else {
-      res.send(flashcard);
+      res.send(property);
     }
   });
 });
 
 router.post('/', (req, res) => {
-  var flashcard = new Flashcard(req.body);
-  flashcard.save((err, saveFlashcard) => {
+  var property = new Property(req.body);
+  property.save((err, saveProperty) => {
 
     if(err) {
       res.status(400).send(err);
     } else {
-      res.send(saveFlashcard);
+      res.send(saveProperty);
     }
   });
 });

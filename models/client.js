@@ -7,7 +7,8 @@ var Client = mongoose.model('clientDB', {
   name: String,
   email: String,
   phonenum: String,
-  otherinfo: String
+  otherinfo: String,
+  propertyref: [{type: mongoose.Schema.Types.ObjectId, ref: 'propertymgrDB'}]
 });
 
 

@@ -43,7 +43,7 @@ app.service('PropertymgrService', function($http, $q) {
      return $http.get(`/api/properties/${id}`);
    };
 
-  this.createProperty = newClient => {
+  this.createProperty = newProperty => {
      return $http.post('/api/properties', newProperty);
    };
 
