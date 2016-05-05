@@ -1,0 +1,38 @@
+<h1 class="text-center">Clients List!</h1>
+
+<button class="btn btn-primary btn-lg" ui-sref='newClient'>New Client</button>
+
+<h3>Clients</h3>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th style='display: none'>Id</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone #</th>
+      <th>Other information</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat='client in clients track by $index'>
+      <td style='display: none'>{{ client._id }}</td>
+      <td>{{ client.name }}</td>
+      <td>{{ client.email }}</td>
+      <td>{{ client.phonenum }}</td>
+      <td>{{ client.otherinfo }}</td>
+      <td><i ng-click='edit(client)' class='glyphicon glyphicon-edit'></i></td>
+      <td><i ng-click='delete(client)' class='glyphicon glyphicon-remove-circle'></i></td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tfoot>
+</table>
