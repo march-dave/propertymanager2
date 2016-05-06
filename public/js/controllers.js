@@ -70,9 +70,16 @@ app.controller('updateClientCtrl', function($scope, $state, ClientService, Prope
     var clientId = $state.params.id;
     var propertyId = property._id;
 
-    console.log('removeProperty UI');
+    // console.log('clientId:', clientId);
+    // console.log('property:', propertyId);
 
-    ClientService.removeProperty(clientId, property);
+    ClientService.removeProperty(clientId, propertyId)
+    .then(  () => {
+
+        // console.log('removeProperty controller');
+
+    } )
+
 
   };
 

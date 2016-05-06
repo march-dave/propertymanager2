@@ -45,10 +45,22 @@ var Propertymgr = require('../models/propertymgr.js')
           if (err) return res.status(400).send(err);
           //  filter removeProperty from Client
 
-          Propertymgr.findById(req.params.propertyId, function(err) {
-              console.log('removeProperty NodeJs');
+          var propertyId = req.params.propertyId;
+          Propertymgr.findById(req.params.propertyId, function(err, property) {
 
-              
+              // client.propertyref.filter( propertyId =>  {
+              //   // console.log('property: propertyId: ', propertyId);
+              //   return propertyId != client.;
+              // });
+
+              client.propertyref.filter( function (c, i, a) {
+                console.log('client.propertyref.filter');
+                return c !== propertyId;
+              });
+
+
+              client.save();
+              // console.log('property: NodeJs End: ', property);
           });
 
       });

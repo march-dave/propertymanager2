@@ -29,6 +29,10 @@ app.service('ClientService', function($http, $q) {
   };
 
   this.removeProperty = function(clientId, propertyId) {
+
+      // console.log('removeProperty Service clientId ', clientId);
+      // console.log('removeProperty Service propertyId ', propertyId);
+
       return $http.put(`/api/clients/${clientId}/removeProperty/${propertyId}`);
   };
 
