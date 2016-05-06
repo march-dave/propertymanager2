@@ -74,8 +74,21 @@ app.controller('updateClientCtrl', function($scope, $state, ClientService, Prope
     .then(  () => {
 
     } )
-
   };
+
+  $scope.removeProperty2 = function() {
+    // var clientId = $state.params.id;
+    // var propertyId = property._id;
+
+    var clientId = $state.params.id;
+    var propertyId = $scope.selectedProperty;
+
+    ClientService.removeProperty(clientId, propertyId)
+    .then(  () => {
+
+    } )
+  };
+
 
   $scope.addProperty = function(property) {
 
