@@ -45,6 +45,11 @@ var Propertymgr = require('../models/propertymgr.js')
           if (err) return res.status(400).send(err);
           //  filter removeProperty from Client
 
+          Propertymgr.findById(req.params.propertyId, function(err) {
+              console.log('removeProperty NodeJs');
+
+              
+          });
 
       });
 

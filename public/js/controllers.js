@@ -44,19 +44,37 @@ app.controller('updateClientCtrl', function($scope, $state, ClientService, Prope
   // PropertymgrService.getPropertyById('572ab2114536260658428ae7')
   PropertymgrService.getPropertyAll()
     .then(function(res) {
-
-      $scope.properties = res.data;
-
-      console.log('res.data: ', res.data);
-
-      // console.log('typeof: ', typeof(res.data)  );
-      // console.log('typeof: $scope.properties', typeof($scope.properties)  );
+      $scope.properties = res;
     })
 
   ClientService.getById($state.params.id)
     .then(function(res){
       $scope.client = res.data;
     })
+
+  $scope.addProperty = function(property) {
+
+    var clientId = $state.params.id;
+    var propertyId = property._id;
+
+    ClientService.addProperty(clientId, propertyId)
+    .then( ()=> {
+
+    })
+    .catch(err => {
+      console.log('err', err.data);
+    })
+  };
+
+  $scope.removeProperty = function(property) {
+    var clientId = $state.params.id;
+    var propertyId = property._id;
+
+    console.log('removeProperty UI');
+
+    ClientService.removeProperty(clientId, property);
+
+  };
 
   $scope.updateClient = () => {
 

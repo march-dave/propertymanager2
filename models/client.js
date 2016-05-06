@@ -12,11 +12,11 @@ var mongoose = require('mongoose');
 // });
 
 var clientShema = new mongoose.Schema({
-  address: String,
-  occupationstatus: String,
-  rentprice: String,
-  utilitiescost: String,
-  otherinfo: String
+  name: String,
+  email: String,
+  phonenum: String,
+  otherinfo: String,
+  propertyref: [{type: mongoose.Schema.Types.ObjectId, ref: 'propertymgrDB'}]
 });
 
 var Client = mongoose.model('Client', clientShema);
