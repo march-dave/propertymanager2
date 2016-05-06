@@ -46,25 +46,14 @@ var Propertymgr = require('../models/propertymgr.js')
           //  filter removeProperty from Client
 
           var propertyId = req.params.propertyId;
-          Propertymgr.findById(req.params.propertyId, function(err, property) {
+          Propertymgr.findById(propertyId, function(err, property) {
 
-              // client.propertyref.filter( propertyId =>  {
-              //   // console.log('property: propertyId: ', propertyId);
-              //   return propertyId != client.;
-              // });
-
-              client.propertyref.filter( function (c, i, a) {
-                console.log('client.propertyref.filter');
-                return c !== propertyId;
+              client.propertyref = client.propertyref.filter( function (c, i, a) {
+                return c.toString() !== propertyId;
               });
-
-
               client.save();
-              // console.log('property: NodeJs End: ', property);
           });
-
       });
-
     });
 
     router.put('/:clientId/addProperty/:propertyId', (req, res) => {

@@ -1,14 +1,11 @@
 <h1 class='text-center'>Update Client</h1>
 
-
-
-
 <div class="row">
   <h4>Property:</h4>
     <h4>Property</h4>
     <ul>
-      <!-- <li ng-repeat='property in properties' ng-dblclick='addProperty(property)'> -->
-      <li ng-repeat='property in properties' ng-dblclick='removeProperty(property)'>
+      <li ng-repeat='property in properties' ng-dblclick='addProperty(property)'>
+      <!-- <li ng-repeat='property in properties' ng-dblclick='removeProperty(property)'> -->
         {{ property._id }}
         {{ property.address }}
         {{ property.rentprice }}
