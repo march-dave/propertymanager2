@@ -1,17 +1,25 @@
 <h1 class='text-center'>Update Client</h1>
 
 <div class="row">
-  <h4>Property:</h4>
     <h4>Property</h4>
-    <ul>
+    <!-- <ul>
       <li ng-repeat='property in properties' ng-dblclick='addProperty(property)'>
-      <!-- <li ng-repeat='property in properties' ng-dblclick='removeProperty(property)'> -->
+      <li ng-repeat='property in properties' ng-dblclick='removeProperty(property)'>
         {{ property._id }}
         {{ property.address }}
         {{ property.rentprice }}
         {{ property.utilitiescost }}
       </li>
-    </ul>
+    </ul> -->
+
+    <form ng-submit=addProperty2()>
+      <select ng-model='selectedProperty' required>
+        <option value="{{property._id}}" ng-repeat='property in properties'>{{property.address}}</option>
+      </select>
+      <button>Add property</button>
+    </form>
+
+
 </div>
 
 <div class="row">

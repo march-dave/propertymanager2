@@ -52,6 +52,31 @@ app.controller('updateClientCtrl', function($scope, $state, ClientService, Prope
       $scope.client = res.data;
     })
 
+  $scope.addProperty2 = function() {
+
+    var clientId = $state.params.id;
+    var propertyId = $scope.selectedProperty;
+
+    ClientService.addProperty(clientId, propertyId)
+    .then( ()=> {
+
+    })
+    .catch(err => {
+      console.log('err', err.data);
+    })
+  };
+
+  $scope.removeProperty = function(property) {
+    var clientId = $state.params.id;
+    var propertyId = property._id;
+
+    ClientService.removeProperty(clientId, propertyId)
+    .then(  () => {
+
+    } )
+
+  };
+
   $scope.addProperty = function(property) {
 
     var clientId = $state.params.id;
@@ -70,13 +95,8 @@ app.controller('updateClientCtrl', function($scope, $state, ClientService, Prope
     var clientId = $state.params.id;
     var propertyId = property._id;
 
-    // console.log('clientId:', clientId);
-    // console.log('property:', propertyId);
-
     ClientService.removeProperty(clientId, propertyId)
     .then(  () => {
-
-        // console.log('removeProperty controller');
 
     } )
 
