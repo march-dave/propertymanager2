@@ -8,10 +8,4 @@ router.get('/', (req, res) => {
   res.render('index', { title: 'Express' });
 });
 
-
-// router.get('/', (req, res) => {
-//   var indexPath = path.join(__dirname, '../views/index.html');
-//   res.sendFile(indexPath);
-// });
-
 module.exports = router;

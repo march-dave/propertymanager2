@@ -10,7 +10,7 @@ app.controller('clientsCtrl', function($scope, $state, $q, $http, clientDex, Cli
   $scope.clients = clientDex;
 
   $scope.edit = function(client) {
-      $state.go('updateClient', {"id": client._id});
+    $state.go('updateClient', {"id": client._id});
   }
 
   $scope.delete = client => {
@@ -24,6 +24,17 @@ app.controller('clientsCtrl', function($scope, $state, $q, $http, clientDex, Cli
       console.log('err', err.data);
     });
   }
+
+  $scope.sortBy = order => {
+    if($scope.sortOrder === order) {
+      $scope.sortOrder = `-${order}`;
+    } else if ($scope.sortOrder === `-${order}`) {
+      $scope.sortOrder = '';
+    } else {
+      $scope.sortOrder = order;
+    }
+  }
+
 });
 
 app.controller('newClientCtrl', function($scope, $state, $q, $http, ClientService) {
@@ -34,7 +45,7 @@ app.controller('newClientCtrl', function($scope, $state, $q, $http, ClientServic
       $state.go('clients');
     })
     .catch(err => {
-        console.log('err', err.data);
+      console.log('err', err.data);
     });
   }
 });
@@ -42,14 +53,14 @@ app.controller('newClientCtrl', function($scope, $state, $q, $http, ClientServic
 app.controller('updateClientCtrl', function($scope, $state, ClientService, PropertymgrService) {
 
   PropertymgrService.getPropertyAll()
-    .then(function(res) {
-      $scope.properties = res;
-    })
+  .then(function(res) {
+    $scope.properties = res;
+  })
 
   ClientService.getById($state.params.id)
-    .then(function(res){
-      $scope.client = res.data;
-    })
+  .then(function(res){
+    $scope.client = res.data;
+  })
 
   $scope.addProperty2 = function() {
 
@@ -121,7 +132,7 @@ app.controller('updateClientCtrl', function($scope, $state, ClientService, Prope
       $state.go('clients')
     })
     .catch(err => {
-        console.log('err', err.data);
+      console.log('err', err.data);
     });
   }
 });
@@ -131,20 +142,20 @@ app.controller('propertiesCtrl', function($scope, $state, propertyDex,  Property
 
 
   $scope.editProperty = function(property) {
-     $state.go('updateProperty', {"id": property._id});
- }
+    $state.go('updateProperty', {"id": property._id});
+  }
 
- $scope.deleteProperty = property => {
+  $scope.deleteProperty = property => {
 
-   $scope.properties.splice(property._id, 1);
-   PropertymgrService.deleteProperty(property._id)
-   .then( ()=>  {
-     // $state.go('clients');
-   })
-   .catch(err => {
-     console.log('err', err.data);
-   });
- }
+    $scope.properties.splice(property._id, 1);
+    PropertymgrService.deleteProperty(property._id)
+    .then( ()=>  {
+      // $state.go('clients');
+    })
+    .catch(err => {
+      console.log('err', err.data);
+    });
+  }
 });
 
 app.controller('newPropertyCtrl', function($scope, $state, $q, $http, PropertymgrService) {
@@ -154,7 +165,7 @@ app.controller('newPropertyCtrl', function($scope, $state, $q, $http, Propertymg
       $state.go('properties');
     })
     .catch(err => {
-        console.log('err', err.data);
+      console.log('err', err.data);
     });
   }
 });
@@ -162,9 +173,9 @@ app.controller('newPropertyCtrl', function($scope, $state, $q, $http, Propertymg
 app.controller('updatePropertyCtrl', function($scope, $state, PropertymgrService) {
 
   PropertymgrService.getPropertyById($state.params.id)
-    .then(function(res){
-      $scope.property = res.data;
-    })
+  .then(function(res){
+    $scope.property = res.data;
+  })
 
   $scope.updateProperty = () => {
     PropertymgrService.editProperty($state.params.id, $scope.property)
@@ -172,7 +183,7 @@ app.controller('updatePropertyCtrl', function($scope, $state, PropertymgrService
       $state.go('properties')
     })
     .catch(err => {
-        console.log('err', err.data);
+      console.log('err', err.data);
     });
   }
 
