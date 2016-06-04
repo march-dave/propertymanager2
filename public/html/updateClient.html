@@ -22,7 +22,6 @@
 
 <div class="row">
   <div class="col-xs-8 col-xs-offset-2">
-
     <form class="form-horizontal" ng-submit='updateClient()'>
 
       <input type="text" class="form-control" ng-model='client._id' style='display:none;'>
@@ -46,17 +45,14 @@
       <button class="btn btn-primary btn-lg">Submit</button>
 
     </form>
-
   </div>
 </div>
 
 <div class="row">
-
   <form ng-submit=removeProperty2()>
     <select ng-model='selectedProperty' required>
       <option value="{{property._id}}" ng-repeat='property in properties'>{{property.address}}</option>
     </select>
     <button>Remove property</button>
   </form>
-
 </div>

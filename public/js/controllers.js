@@ -41,7 +41,6 @@ app.controller('newClientCtrl', function($scope, $state, $q, $http, ClientServic
 
 app.controller('updateClientCtrl', function($scope, $state, ClientService, PropertymgrService) {
 
-  // PropertymgrService.getPropertyById('572ab2114536260658428ae7')
   PropertymgrService.getPropertyAll()
     .then(function(res) {
       $scope.properties = res;
@@ -88,7 +87,6 @@ app.controller('updateClientCtrl', function($scope, $state, ClientService, Prope
 
     } )
   };
-
 
   $scope.addProperty = function(property) {
 

@@ -11,7 +11,7 @@ var mongoose = require('mongoose');
 //   propertyref: [{type: mongoose.Schema.Types.ObjectId, ref: 'propertymgrDB'}]
 // });
 
-var clientShema = new mongoose.Schema({
+var clientSchema = new mongoose.Schema({
   name: String,
   email: String,
   phonenum: String,
@@ -19,6 +19,6 @@ var clientShema = new mongoose.Schema({
   propertyref: [{type: mongoose.Schema.Types.ObjectId, ref: 'propertymgrDB'}]
 });
 
-var Client = mongoose.model('Client', clientShema);
+var Client = mongoose.model('Client', clientSchema);
 
 module.exports = Client;
