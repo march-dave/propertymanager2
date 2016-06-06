@@ -1,12 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-// var Tree = require('../models/tree');
 var Property = require('../models/propertymgr');
-
-// GET /api/trees   ===> return array of all trees
-// GET /api/trees/id  ===> return one tree by id
-// POST /api/trees  ===> create a new tress
 
 /* GET users listing. */
 router.get('/', (req, res) => {

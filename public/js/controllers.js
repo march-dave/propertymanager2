@@ -37,17 +37,27 @@ app.controller('clientsCtrl', function($scope, $state, $q, $http, clientDex, Cli
 
 });
 
-app.controller('newClientCtrl', function($scope, $state, $q, $http, ClientService) {
+app.controller('newClientCtrl', function($scope, $state, $q, $http, ClientService, PropertymgrService) {
 
-  $scope.addNewClient = () => {
-    ClientService.create($scope.newClient)
-    .then( ()=>  {
-      $state.go('clients');
-    })
-    .catch(err => {
-      console.log('err', err.data);
-    });
-  }
+  PropertymgrService.getPropertyAll()
+  .then(function(res) {
+
+    console.log('res', res);
+
+    $scope.properties  = res;
+    $scope.selectedProperty = "572b536c3cd4d3aa5c1855b8"
+  })
+  .catch( err => {console.log('err', err);})
+
+$scope.addNewClient = () => {
+  ClientService.create($scope.newClient)
+  .then( ()=>  {
+    $state.go('clients');
+  })
+  .catch(err => {
+    console.log('err', err.data);
+  });
+}
 });
 
 app.controller('updateClientCtrl', function($scope, $state, ClientService, PropertymgrService) {

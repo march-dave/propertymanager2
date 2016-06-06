@@ -5,7 +5,6 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-
 var mongoose = require('mongoose');
 
 const MONGOURL = process.env.MONGODB_URI || 'mongodb://localhost:/propertymgr-app2'
@@ -28,9 +27,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api', require('./routes/api'));
-
 app.use('/', require('./routes/index'));
-// app.use('/users', require('./routes/users'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

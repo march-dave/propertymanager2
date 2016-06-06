@@ -27,19 +27,17 @@ app.service('ClientService', function($http, $q) {
   this.addProperty = function(clientId, propertyId) {
       return $http.put(`/api/clients/${clientId}/addProperty/${propertyId}`);
   };
-
   this.removeProperty = function(clientId, propertyId) {
       return $http.put(`/api/clients/${clientId}/removeProperty/${propertyId}`);
   };
-
 });
 
 app.service('PropertymgrService', function($http, $q) {
 
   this.getPropertyAll = () => {
     return $http({
-      method: "GET",
-      url: `/api/properties`,
+      method: 'GET',
+      url: '/api/properties',
       cache: false
     })
     .then(res => $q.resolve(res.data));

@@ -58,9 +58,6 @@ app.config(function($stateProvider, $urlRouterProvider) {
       controller: 'updatePropertyCtrl'
     })
 
-
-
-
     $urlRouterProvider.otherwise('/');
 
 });
