@@ -3,36 +3,25 @@ var router = express.Router();
 
 var Property = require('../models/propertymgr');
 
+
+// res.status(err ? 400 : 200).send(err || savedClient);
 /* GET users listing. */
 router.get('/', (req, res) => {
-  Property.find({}, (err, trees) => {
-    if(err) {
-      res.status(400).send(err);
-    } else {
-      res.send(trees);
-    }
+  Property.find({}, (err, properties) => {
+    res.status(err ? 400 : 200).send(err || properties);
   });
 });
 
 /* GET /api/trees/:id */
 router.get('/:id', (req, res) => {
-
   Property.findById(req.params.id, (err, properties) => {
-    if(err) {
-      res.status(400).send(err);
-    } else {
-      res.send(properties);
-    }
+    res.status(err ? 400 : 200).send(err || properties);
   });
 });
 
 router.delete('/:id', (req, res) => {
   Property.findByIdAndRemove(req.params.id, (err, properties) => {
-    if(err) {
-      res.status(400).send(err);
-    } else {
-      res.send();
-    }
+    res.status(err ? 400 : 200).send(err || properties);
   });
 
 });
@@ -43,23 +32,14 @@ router.put('/:id', (req, res) => {
   // req.body --> update obj
 
   Property.findByIdAndUpdate(req.params.id,  {$set: req.body},  {new: true}, (err, property) => {
-    if(err) {
-      res.status(400).send(err);
-    } else {
-      res.send(property);
-    }
+    res.status(err ? 400 : 200).send(err || property);
   });
 });
 
 router.post('/', (req, res) => {
   var property = new Property(req.body);
   property.save((err, saveProperty) => {
-
-    if(err) {
-      res.status(400).send(err);
-    } else {
-      res.send(saveProperty);
-    }
+    res.status(err ? 400 : 200).send(err || saveProperty);
   });
 });
 

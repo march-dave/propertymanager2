@@ -109,15 +109,15 @@ app.controller('updateClientCtrl', function($scope, $state, ClientService, Prope
     })
   };
 
-  $scope.removeProperty = function(property) {
-    var clientId = $state.params.id;
-    var propertyId = property._id;
-
-    ClientService.removeProperty(clientId, propertyId)
-    .then(  () => {
-
-    })
-  };
+  // $scope.removeProperty = function(property) {
+  //   var clientId = $state.params.id;
+  //   var propertyId = property._id;
+  //
+  //   ClientService.removeProperty(clientId, propertyId)
+  //   .then(  () => {
+  //
+  //   })
+  // };
 
   $scope.updateClient = () => {
 
@@ -129,6 +129,7 @@ app.controller('updateClientCtrl', function($scope, $state, ClientService, Prope
       console.log('err', err.data);
     });
   }
+  
 });
 
 app.controller('propertiesCtrl', function($scope, $state, propertyDex,  PropertymgrService) {
