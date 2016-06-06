@@ -2,16 +2,6 @@
 
 <div class="row">
     <h4>Property</h4>
-    <!-- <ul>
-      <li ng-repeat='property in properties' ng-dblclick='addProperty(property)'>
-      <li ng-repeat='property in properties' ng-dblclick='removeProperty(property)'>
-        {{ property._id }}
-        {{ property.address }}
-        {{ property.rentprice }}
-        {{ property.utilitiescost }}
-      </li>
-    </ul> -->
-
     <form ng-submit=addProperty2()>
       <select ng-model='selectedProperty' required>
         <option value="{{property._id}}" ng-repeat='property in properties'>{{property.address}}</option>

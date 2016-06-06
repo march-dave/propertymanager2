@@ -6,8 +6,8 @@
     <form class="form-horizontal" ng-submit='addNewClient()'>
 
       <div class="form-group" >
-        <select ng-model='selectedProperty' required class="form-control search">
-          <<option seleted disabled hidden style="display: none" value=""></option>
+        <select ng-model='newClient.propertyref' required class="form-control search">
+          <option seleted disabled hidden style="display: none" value=""></option>
           <option value="{{property._id}}" ng-repeat='property in properties'>{{property.address}}</option>
         </select>
       </div>

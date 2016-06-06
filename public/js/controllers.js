@@ -14,7 +14,6 @@ app.controller('clientsCtrl', function($scope, $state, $q, $http, clientDex, Cli
   }
 
   $scope.delete = client => {
-
     $scope.clients.splice(client._id, 1);
     ClientService.delete(client._id)
     .then( ()=>  {
@@ -34,30 +33,21 @@ app.controller('clientsCtrl', function($scope, $state, $q, $http, clientDex, Cli
       $scope.sortOrder = order;
     }
   }
-
 });
 
-app.controller('newClientCtrl', function($scope, $state, $q, $http, ClientService, PropertymgrService) {
+app.controller('newClientCtrl', function($scope, $state, $q, $http, ClientService, propertyDex) {
 
-  PropertymgrService.getPropertyAll()
-  .then(function(res) {
-
-    console.log('res', res);
-
-    $scope.properties  = res;
-    $scope.selectedProperty = "572b536c3cd4d3aa5c1855b8"
-  })
-  .catch( err => {console.log('err', err);})
-
-$scope.addNewClient = () => {
-  ClientService.create($scope.newClient)
-  .then( ()=>  {
-    $state.go('clients');
-  })
-  .catch(err => {
-    console.log('err', err.data);
-  });
-}
+    $scope.properties = propertyDex;
+    $scope.addNewClient = () => {
+      ClientService.create($scope.newClient)
+      .then( ()=>  {
+        var newClient = $scope.newClient;
+        $state.go('clients');
+      })
+      .catch(err => {
+        console.log('err', err.data);
+      });
+    }
 });
 
 app.controller('updateClientCtrl', function($scope, $state, ClientService, PropertymgrService) {
@@ -78,7 +68,7 @@ app.controller('updateClientCtrl', function($scope, $state, ClientService, Prope
     var propertyId = $scope.selectedProperty;
 
     ClientService.addProperty(clientId, propertyId)
-    .then( ()=> {
+    .then(() => {
 
     })
     .catch(err => {
@@ -91,26 +81,22 @@ app.controller('updateClientCtrl', function($scope, $state, ClientService, Prope
     var propertyId = property._id;
 
     ClientService.removeProperty(clientId, propertyId)
-    .then(  () => {
+    .then( () => {
 
     } )
   };
 
   $scope.removeProperty2 = function() {
-    // var clientId = $state.params.id;
-    // var propertyId = property._id;
-
     var clientId = $state.params.id;
     var propertyId = $scope.selectedProperty;
 
     ClientService.removeProperty(clientId, propertyId)
-    .then(  () => {
+    .then( () => {
 
     } )
   };
 
   $scope.addProperty = function(property) {
-
     var clientId = $state.params.id;
     var propertyId = property._id;
 
@@ -130,9 +116,7 @@ app.controller('updateClientCtrl', function($scope, $state, ClientService, Prope
     ClientService.removeProperty(clientId, propertyId)
     .then(  () => {
 
-    } )
-
-
+    })
   };
 
   $scope.updateClient = () => {
@@ -150,13 +134,11 @@ app.controller('updateClientCtrl', function($scope, $state, ClientService, Prope
 app.controller('propertiesCtrl', function($scope, $state, propertyDex,  PropertymgrService) {
   $scope.properties = propertyDex;
 
-
   $scope.editProperty = function(property) {
     $state.go('updateProperty', {"id": property._id});
   }
 
   $scope.deleteProperty = property => {
-
     $scope.properties.splice(property._id, 1);
     PropertymgrService.deleteProperty(property._id)
     .then( ()=>  {
