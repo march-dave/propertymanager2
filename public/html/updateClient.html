@@ -1,18 +1,15 @@
 <h1 class='text-center'>Update Client</h1>
 
 <div class="row">
-    <h4>Property</h4>
-    <form ng-submit=addProperty2()>
-      <select ng-model='selectedProperty' required>
-        <option value="{{property._id}}" ng-repeat='property in properties'>{{property.address}}</option>
-      </select>
-      <button>Add property</button>
-    </form>
-</div>
-
-<div class="row">
   <div class="col-xs-8 col-xs-offset-2">
     <form class="form-horizontal" ng-submit='updateClient()'>
+
+      <div class="form-group" >
+        <select ng-model='newClient.propertyref' required class="form-control search">
+          <option seleted disabled hidden style="display: none" value=""></option>
+          <option value="{{property._id}}" ng-repeat='property in properties'>{{property.address}}</option>
+        </select>
+      </div>
 
       <input type="text" class="form-control" ng-model='client._id' style='display:none;'>
 
@@ -38,11 +35,11 @@
   </div>
 </div>
 
-<div class="row">
+<!-- <div class="row">
   <form ng-submit=removeProperty2()>
     <select ng-model='selectedProperty' required>
       <option value="{{property._id}}" ng-repeat='property in properties'>{{property.address}}</option>
     </select>
     <button>Remove property</button>
   </form>
-</div>
+</div> -->

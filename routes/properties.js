@@ -1,10 +1,7 @@
 var express = require('express');
 var router = express.Router();
-
 var Property = require('../models/propertymgr');
 
-
-// res.status(err ? 400 : 200).send(err || savedClient);
 /* GET users listing. */
 router.get('/', (req, res) => {
   Property.find({}, (err, properties) => {
@@ -23,14 +20,9 @@ router.delete('/:id', (req, res) => {
   Property.findByIdAndRemove(req.params.id, (err, properties) => {
     res.status(err ? 400 : 200).send(err || properties);
   });
-
 });
 
 router.put('/:id', (req, res) => {
-
-  // req.params.id --> docuemt id
-  // req.body --> update obj
-
   Property.findByIdAndUpdate(req.params.id,  {$set: req.body},  {new: true}, (err, property) => {
     res.status(err ? 400 : 200).send(err || property);
   });

@@ -6,12 +6,9 @@ var Propertymgr = require('../models/propertymgr.js')
 
 router.route('/')
 .get((req, res) => {
-  Client.find({}, (err, trees) => {
-    if(err) {
-      res.status(400).send(err);
-    } else {
-      res.send(trees);
-    }
+  Client.find({}, (err, clients) => {
+    // console.log('clients', clients);
+    res.status(err ? 400 : 200).send(err || clients);
   });
 })
 .post((req, res) => {
@@ -47,7 +44,7 @@ router.put('/:clientId/removeProperty/:propertyId', (req, res) => {
     var propertyId = req.params.propertyId;
     Propertymgr.findById(propertyId, function(err, property) {
 
-      client.propertyref = client.propertyref.filter( function (c, i, a) {
+      client.propertyref = client.propertyref.filter( function (c) {
         return c.toString() !== propertyId;
       });
       client.save();

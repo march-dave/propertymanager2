@@ -8,8 +8,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
     .state('home', {
       url: '/',
       templateUrl: '/html/home.html',
-      controller: 'homeCtrl'
-      ,resolve: {
+      controller: 'homeCtrl',
+      resolve: {
           clientDex: function(ClientService) {
             return ClientService.getAll();
           }
@@ -18,8 +18,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
     .state('clients', {
       url: '/clients',
       templateUrl: '/html/clients.html',
-      controller: 'clientsCtrl'
-      ,
+      controller: 'clientsCtrl',
       resolve: {
         clientDex: function(ClientService) {
           return ClientService.getAll();

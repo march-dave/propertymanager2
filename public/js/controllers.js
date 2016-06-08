@@ -39,6 +39,7 @@ app.controller('newClientCtrl', function($scope, $state, $q, $http, ClientServic
 
     $scope.properties = propertyDex;
     $scope.addNewClient = () => {
+      console.log('$scope.newClient', $scope.newClient);
       ClientService.create($scope.newClient)
       .then( ()=>  {
         var newClient = $scope.newClient;
@@ -63,7 +64,6 @@ app.controller('updateClientCtrl', function($scope, $state, ClientService, Prope
   })
 
   $scope.addProperty2 = function() {
-
     var clientId = $state.params.id;
     var propertyId = $scope.selectedProperty;
 
@@ -129,7 +129,7 @@ app.controller('updateClientCtrl', function($scope, $state, ClientService, Prope
       console.log('err', err.data);
     });
   }
-  
+
 });
 
 app.controller('propertiesCtrl', function($scope, $state, propertyDex,  PropertymgrService) {
