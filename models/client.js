@@ -1,12 +1,13 @@
 'use strict';
 
 var mongoose = require('mongoose');
+var propertymgrDB = require('./propertymgr');
 
 var clientSchema = new mongoose.Schema({
-  name: String,
-  email: String,
-  phonenum: String,
-  otherinfo: String,
+  name: {type: String},
+  email: {type: String},
+  phonenum: {type: String},
+  otherinfo: {type: String},
   propertyref: [{type: mongoose.Schema.Types.ObjectId, ref: 'propertymgrDB'}]
 });
 

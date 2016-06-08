@@ -7,7 +7,6 @@ var Propertymgr = require('../models/propertymgr.js')
 router.route('/')
 .get((req, res) => {
   Client.find({}, (err, clients) => {
-    // console.log('clients', clients);
     res.status(err ? 400 : 200).send(err || clients);
   });
 })
@@ -62,9 +61,9 @@ router.put('/:clientId/addProperty/:propertyId', (req, res) => {
       client.save((err, savedClient) => {
         res.status(err ? 400 : 200).send(err || savedClient);
       });
-    }
-  )
-});
+      }
+    )
+  });
 });
 
 module.exports = router;

@@ -39,7 +39,6 @@ app.controller('newClientCtrl', function($scope, $state, $q, $http, ClientServic
 
     $scope.properties = propertyDex;
     $scope.addNewClient = () => {
-      console.log('$scope.newClient', $scope.newClient);
       ClientService.create($scope.newClient)
       .then( ()=>  {
         var newClient = $scope.newClient;
