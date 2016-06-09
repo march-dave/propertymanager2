@@ -58,6 +58,9 @@ app.controller('updateClientCtrl', function($scope, $state, ClientService, Prope
 
   ClientService.getById($state.params.id)
   .then(function(res){
+
+    console.log('res.data', res.data.propertyref[0].address);
+
     $scope.client = res.data;
   })
 
