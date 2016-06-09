@@ -24,7 +24,6 @@ app.config(function($stateProvider, $urlRouterProvider) {
           return ClientService.getAll();
         }
       }
-
     })
     .state('newClient', {
       url: '/newClient',
