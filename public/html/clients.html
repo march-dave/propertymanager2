@@ -28,6 +28,9 @@
   </thead>
   <tbody>
     <tr ng-repeat='client in clients | filter:searchFilter | orderBy:sortOrder track by $index'>
+      <!-- <td>{{ client.propertyref }}</td>
+      <td>{{ client.propertyref[0] }}</td> -->
+      <!-- <td>{{ client._id }}</td> -->
       <td style='display: none'>{{ client._id }}</td>
       <td>{{ client.name }}</td>
       <td>{{ client.email }}</td>

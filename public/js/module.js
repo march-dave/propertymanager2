@@ -31,7 +31,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: '/html/newClient.html',
       controller: 'newClientCtrl',
       resolve: {
-        propertyDex: (PropertymgrService) => {
+        propertyDex: PropertymgrService => {
           return PropertymgrService.getPropertyAll();
         }
       }

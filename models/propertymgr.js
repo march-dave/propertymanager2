@@ -2,7 +2,7 @@
 
 var mongoose = require('mongoose');
 
-var propertymgrShema = new mongoose.Schema({
+var propertymgrSchema = new mongoose.Schema({
   address: String,
   occupationstatus: String,
   rentprice: String,
@@ -10,5 +10,5 @@ var propertymgrShema = new mongoose.Schema({
   otherinfo: String
 });
 
-var Propertymgr = mongoose.model('Propertymgr', propertymgrShema)
+var Propertymgr = mongoose.model('Propertymgr', propertymgrSchema)
 module.exports = Propertymgr;

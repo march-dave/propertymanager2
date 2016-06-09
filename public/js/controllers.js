@@ -8,8 +8,7 @@ app.controller('homeCtrl', function($scope, $q, $http, clientDex) {
 
 app.controller('clientsCtrl', function($scope, $state, $q, $http, clientDex, ClientService) {
   $scope.clients = clientDex;
-
-  $scope.edit = function(client) {
+  $scope.edit = (client) => {
     $state.go('updateClient', {"id": client._id});
   }
 
